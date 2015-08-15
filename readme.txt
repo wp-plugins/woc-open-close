@@ -1,4 +1,4 @@
-=== WOC Open Close ===
+=== Woocommerce Open Close ===
 Contributors: jaedm97
 Donate link: http://example.com/
 Tags: woocommerce, opening-closing-time,opening-time,closing-time,wordpress,web-shop-management,restrict-add-to-cart,wordpress-plugin,woc-open-close
