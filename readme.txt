@@ -39,11 +39,11 @@ Thanks.
 
 == Screenshots ==
 
-1. woc-img-admin-view.png
+1. screenshot-1.png
 
-2. woc-img-restrict-view.png
+2. screenshot-2.png
 
-3. woc-img-short-code-view.png
+3. screenshot-3.png
 
 
 == Changelog ==
