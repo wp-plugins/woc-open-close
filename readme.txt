@@ -1,7 +1,7 @@
 === Woocommerce Open Close ===
 Contributors: jaedm97
 Donate link: http://example.com/
-Tags: woocommerce, opening-closing-time,opening-time,closing-time,wordpress,web-shop-management,restrict-add-to-cart,wordpress-plugin,woc-open-close
+Tags: woocommerce, woocommerce open close, opening-closing-time,opening-time,closing-time,wordpress,web-shop-management,restrict-add-to-cart,wordpress-plugin,woc-open-close
 Tested up to: 4.2.4
 Stable tag: trunk
 Requires at least: 3.0.1
@@ -22,17 +22,29 @@ The Key Feature of this awesome plugin are given below:
 4. Your Customers will able to know weather the web-shop is open or close. Also they will know the opening and closing time of that day.
 5. It is supported with all versions of WordPress and Woocommerce.
 
-So Have a copy of WOC Open Close plugin and make your web-shop more smart.
+So Have a copy of Woocommerce Open Close plugin and make your webshop more smart.
+
+Visit Demo Website: http://woocommerceopenclose.ml/
 
 Thanks.
 
 == Installation ==
 
-1. Upload `plugin-name.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
-4. Now select from the Admin menu Woocommerce open close and edit your settings.
-5. If you want to get all the features then Click Buy in the bottom of the page.
+1. Upload Woocommerce Open Close to the /wp-content/plugins/ directory
+2. Activate the plugin through the Plugins menu in WordPress
+3. Now select from the Admin menu Woocommerce open close and edit your settings.
+4. If you want to get all the features then Click Buy in the bottom of the page.
+5. If you have inquiry then contact. http://woocommerceopenclose.ml/contact/
+
+
+== Screenshots ==
+
+1. woc-img-admin-view.png
+
+2. woc-img-restrict-view.png
+
+3. woc-img-short-code-view.png
+
 
 == Changelog ==
 
