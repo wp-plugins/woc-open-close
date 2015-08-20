@@ -1,7 +1,7 @@
 ﻿=== Woocommerce Open Close ===
 Contributors: jaedm97
 Donate link: http://example.com/
-Tags: woocommerce, woocommerce open close, opening-closing-time,opening-time,closing-time,wordpress,web-shop-management,restrict-add-to-cart,wordpress-plugin,woc-open-close,maintain scheduling in woocommerce
+Tags: woocommerce, woocommerce open close, opening-closing-time,opening-time,closing-time,wordpress,web-shop-management,restrict-add-to-cart,wordpress-plugin,woc-open-close,maintain scheduling in woocommerce,maintain scheduling in website, maintain scheduling in webshop 
 Tested up to: 4.2.4
 Stable tag: trunk
 Requires at least: 3.0.1
