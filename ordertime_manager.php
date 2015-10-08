@@ -1,39 +1,44 @@
 <?php
 /*
 	Plugin Name:	WOC Open Close
-	Plugin URI:		http://woocommerceopenclose.ml
+	Plugin URI:		http://pluginbazar.ml/blog/woc-open-close/
 	Description: 	This is a plug-in for a web shop to maintain it's opening and closing 
 						time in different days of a week. Isn't this awesome ?
-	Version: 		2015.8.x.0.1
-	Author: 		Jaed Mosharraf
-	Author URI: 	http://woocommerceopenclose.ml
+	Version: 1.1.0
+	Author: Jaed Mosharraf
+	Author URI: http://pluginbazar.ml/
+	License: GPLv2 or later
+	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 //define section
-global $wpdb;
-if ( ! defined( 'DB_TABLE_NAME' ) ) define( 'DB_TABLE_NAME', $wpdb->prefix .'woocommerce_open_close' );
+	global $wpdb;
+	$woc_off_message = '';
+	
+	if ( ! defined( 'DB_TABLE_NAME' ) ) define( 'DB_TABLE_NAME', $wpdb->prefix .'woocommerce_open_close' );
+	if ( ! defined( 'WOC_USER_TYPE' ) ) define('WOC_USER_TYPE', 'pro');
+	
+	add_action('admin_menu', 'woc_display_admin_menu');
+	add_shortcode( 'woc_open_close', 'woc_woocommerce_open_close' );
+	
+	function woc_include_admin_menu() 
+	{
+		global $wpdb;
+		global $default;
+		global $limit;
+		global $p;
+		global $searchTerm;
+		include("manage_order_time.php"); 
+	}
+	
+	function woc_display_admin_menu() 
+	{
+		add_menu_page('WOC Open Close', 'WOC Open Close', 'edit_pages', 'woc_manage_ordertime', 'woc_include_admin_menu');
+	}
 	
 
-function woc_set_ordertime()
-{
-	global $wpdb;
-	global $default;
-	global $limit;
-	global $p;
-	global $searchTerm;
-	include("manage_order_time.php"); 
-}	
-
-function woc_add_ordertime() 
-{
- 	global $wpdb;
- 	global $default;
- 	add_menu_page('WOC Open/Close', 'WOC Open/Close', 1, 'woc_manage_ordertime', 'woc_set_ordertime');
-}
-add_action('admin_menu', 'woc_add_ordertime');
-
 //actication and deactication hook registration
-function woc_activate() 
+function woc_activate()
 {
 	global $wpdb;
 	$charset_collate = $wpdb->get_charset_collate();
@@ -109,34 +114,10 @@ function woc_deactivate()
 register_deactivation_hook( __FILE__, 'woc_deactivate' );
 
 
-function woc_woocommerce_open_close( $atts, $content = null ) 
-{
-    ob_start();
-	
-	global $wpdb;
-	$result = $wpdb->get_results($wpdb->prepare("SELECT * FROM ".$wpdb->prefix ."woocommerce_open_close  where %d", 1));
-	
-	echo '<table width="100%" border="0" cellspacing="0" cellpadding="0">';
-	
-	foreach( $result as $rt )
-	{
-		echo 	'<tr>
-					<td>' . ucfirst($rt->day) . "day" .  '</td>
-					<td>' . $rt->start_time . ' - ' . $rt->end_time . '</td>
-				</tr>';
-    }
-	echo '</table>';
-
-	$output = ob_get_contents();
-    ob_end_clean(); 
-    return $output;
-}
-add_shortcode( 'woc_open_close', 'woc_woocommerce_open_close' );
-
 //adding top bar in website
-add_action( 'wp_footer', 'woc_check_is_open' );
+add_action( 'wp_footer', 'woc_show_footer_off_message' );
 
-function woc_check_is_open() 
+function woc_show_footer_off_message()
 {
 	global $wpdb;
 	$zone =  get_option('timezone_string');
@@ -154,15 +135,16 @@ function woc_check_is_open()
 	$endTime		= $sql_pr->end_time;
 	$popUpMessage	= $sql_pr->message;
 
+	$woc_off_message = "$popUpMessage || Today we deliver from $startTime to $endTime.";
 	
-	if($time>=$startTime and $time<=$endTime) {}
-	else 
+	if ( woc_check_is_open() == 0 )
 	{
-		if (!is_admin()) woc_show_top_bar("$popUpMessage || Today we deliver from $startTime to $endTime.");		
+		if (!is_admin()) woc_show_top_bar($woc_off_message);		
 	}
 	
 }
 
+// Global Functions Start
 function woc_get_day($str_day)
 {
 	$day_int = 0;
@@ -216,4 +198,52 @@ function woc_show_top_bar($msg)
 	</div>
 	<?php
 }
+
+function woc_check_is_open() 
+{
+	global $wpdb;
+	$zone =  get_option('timezone_string');
+	date_default_timezone_set("$zone");	
+	
+	$ct		= strtotime("now");
+	$time	= date('H:i',$ct); 
+	$day 	= woc_get_day(date('D'));
+	
+	$sql_pr = $wpdb->get_row( $wpdb->prepare (
+					"SELECT start_time,end_time,message FROM ".$wpdb->prefix ."woocommerce_open_close
+						WHERE id = %d",$day));
+
+	$startTime		= $sql_pr->start_time;
+	$endTime		= $sql_pr->end_time;
+	$popUpMessage	= $sql_pr->message;
+
+	
+	if($time>=$startTime and $time<=$endTime) return 1; //shop_open
+	else return 0; //shop_open
+}
+
+function woc_woocommerce_open_close( $atts, $content = null ) 
+{
+    ob_start();
+	
+	global $wpdb;
+	$result = $wpdb->get_results($wpdb->prepare("SELECT * FROM ".$wpdb->prefix ."woocommerce_open_close  where %d", 1));
+	
+	echo '<table width="100%" border="0" cellspacing="0" cellpadding="0">';
+	
+	foreach( $result as $rt )
+	{
+		echo 	'<tr>
+					<td>' . ucfirst($rt->day) . "day" .  '</td>
+					<td>' . $rt->start_time . ' - ' . $rt->end_time . '</td>
+				</tr>';
+    }
+	echo '</table>';
+
+	$output = ob_get_contents();
+    ob_end_clean(); 
+    return $output;
+}
+
+
 ?>

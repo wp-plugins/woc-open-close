@@ -9,6 +9,7 @@
 <?php 
 global $wpdb; 
 extract($_GET);
+if (!isset($action)) $action = '';
 if ( $action == "edit" )
 {
 ?>
@@ -94,18 +95,29 @@ else
     }
 	echo '</table>';
 	
-	echo 	'<h2 align="center" style="border: 2px solid #861212;padding: 5px;width: 60%;margin-left: auto;margin-right: auto;"> Alert Message Box 
+	
+	echo	'<h2 align="center" style="border: 2px solid #861212;padding: 5px;width: 60%;margin-left: auto;margin-right: auto;"> Alert Message Box 
 			</br><hr>
 				<font color="red">'.$message.'</font>
 			</h2>';
 			
-	echo 	'<h2 align="center" style="background:#3993D0;border: 2px solid #861212;padding: 5px;width: 80%;margin-left: auto;margin-right: auto;"> 
+	if ( WOC_USER_TYPE == 'free' ):
+		echo '<h2 align="center" style="background:#3993D0;border: 2px solid #861212;padding: 5px;width: 80%;margin-left: auto;margin-right: auto;"> 
 				<b>Warning !!! </b>
 				</br><hr>
 				<font color="#400000"><b>Currently You are using free version of this Plugin. To get all features have a Paid Version.</b></font>
 				</br><hr>
-				<a style="text-decoration:none;" href="http://woocommerceopenclose.ml" target="_blank"><font color="#400000"><b>Click Here to BUY</b></font></a>
+				<a style="text-decoration:none;" href="http://pluginbazar.ml" target="_blank"><font color="#400000"><b>Click Here to BUY</b></font></a>
 			</h2>';
+	elseif ( WOC_USER_TYPE == 'pro' ):	
+		echo '<h2 align="center" style="background:#3993D0;border: 2px solid #861212;padding: 5px;width: 80%;margin-left: auto;margin-right: auto;"> 
+				<b>Congratulations !!! </b>
+				</br><hr>
+				<font color="#fff"><b>Currently You are using PREMIUM version of this Plugin.</b></font>
+				</br><hr>
+				<a style="text-decoration:none;" href="http://pluginbazar.ml" target="_blank"><font color="#fff"><b>PLUGINBAZAR</b></font></a>
+			</h2>';
+	endif;
 } 
 ?>
 <script language="javascript">

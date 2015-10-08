@@ -1,12 +1,12 @@
-﻿=== Woocommerce Open Close ===
-Contributors: jaedm97
-Donate link: http://example.com/
-Tags: woocommerce, woocommerce open close, opening-closing-time,opening-time,closing-time,wordpress,web-shop-management,restrict-add-to-cart,wordpress-plugin,woc-open-close,maintain scheduling in woocommerce,maintain scheduling in website, maintain scheduling in webshop, opening, closing, opening shop, opening website, opening woocommerce, closing shop, closing website, closing woocommerce 
-Tested up to: 4.2.4
-Stable tag: trunk
-Requires at least: 3.0.1
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+﻿=== Woocommerce Open Close ===	
+	Contributors: jaedm97
+	Donate link: http://pluginbazar.ml/donate
+	Tags: woocommerce, woocommerce open close, opening-closing-time,opening-time,closing-time,wordpress,web-shop-management,restrict-add-to-cart,wordpress-plugin,woc-open-close,maintain scheduling in woocommerce,maintain scheduling in website, maintain scheduling in webshop, opening, closing, opening shop, opening website, opening woocommerce, closing shop, closing website, closing woocommerce 
+	Requires at least: 3.0
+	Tested up to: 4.3.1
+	Stable tag: 1.1.0
+	License: GPLv2 or later
+	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 This is a plug-in for a web shop to maintain it's opening and closing time in different days of a week.
 
