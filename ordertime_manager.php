@@ -16,7 +16,7 @@
 	$woc_off_message = '';
 	
 	if ( ! defined( 'DB_TABLE_NAME' ) ) define( 'DB_TABLE_NAME', $wpdb->prefix .'woocommerce_open_close' );
-	if ( ! defined( 'WOC_USER_TYPE' ) ) define('WOC_USER_TYPE', 'pro');
+	if ( ! defined( 'WOC_USER_TYPE' ) ) define('WOC_USER_TYPE', 'free');
 	
 	add_action('admin_menu', 'woc_display_admin_menu');
 	add_shortcode( 'woc_open_close', 'woc_woocommerce_open_close' );
