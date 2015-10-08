@@ -48,5 +48,10 @@ Thanks.
 
 == Changelog ==
 
-= 2015.8.x.0.1 =
-* This is the First version of WOC Open Close Plugin.
+	= 1.0.0 =
+	* This is the First version of WOC Open Close Plugin.
+	
+	= 1.1.0 =
+	* Changed a Lots in functionality and compatibility with WordPress.
+	
+	
