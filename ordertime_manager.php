@@ -4,7 +4,7 @@
 	Plugin URI:		http://pluginbazar.ml/blog/woc-open-close/
 	Description: 	This is a plug-in for a web shop to maintain it's opening and closing 
 						time in different days of a week. Isn't this awesome ?
-	Version: 1.1.0
+	Version: 1.1.1
 	Author: Jaed Mosharraf
 	Author URI: http://pluginbazar.ml/
 	License: GPLv2 or later
@@ -20,7 +20,7 @@
 	
 	add_action('admin_menu', 'woc_display_admin_menu');
 	add_shortcode( 'woc_open_close', 'woc_woocommerce_open_close' );
-	
+	add_filter( 'widget_text', 'do_shortcode', 11);
 	function woc_include_admin_menu() 
 	{
 		global $wpdb;
