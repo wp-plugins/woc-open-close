@@ -55,6 +55,6 @@ Thanks.
 	* Changed a Lots in functionality and compatibility with WordPress.
 	
 	= 1.1.1 =
-	* Changed a BUG
+	* Fixed a BUG
 	
 	
