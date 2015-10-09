@@ -4,19 +4,22 @@
 	Plugin URI:		http://pluginbazar.ml/blog/woc-open-close/
 	Description: 	This is a plug-in for a web shop to maintain it's opening and closing 
 						time in different days of a week. Isn't this awesome ?
-	Version: 1.1.1
+	Version: 1.1.2
 	Author: Jaed Mosharraf
 	Author URI: http://pluginbazar.ml/
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
-//define section
+	//define section
 	global $wpdb;
 	$woc_off_message = '';
 	
 	if ( ! defined( 'DB_TABLE_NAME' ) ) define( 'DB_TABLE_NAME', $wpdb->prefix .'woocommerce_open_close' );
-	if ( ! defined( 'WOC_USER_TYPE' ) ) define('WOC_USER_TYPE', 'free');
+	if ( ! defined( 'WOC_PLUGIN_DIR' ) ) define('WOC_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+	
+	if ( is_dir( WOC_PLUGIN_DIR.'pro' ) ) 
+		require_once('pro/pluginbazar_pro_woc_open_close.php');
 	
 	add_action('admin_menu', 'woc_display_admin_menu');
 	add_shortcode( 'woc_open_close', 'woc_woocommerce_open_close' );
@@ -28,6 +31,8 @@
 		global $limit;
 		global $p;
 		global $searchTerm;
+		if ( is_dir( WOC_PLUGIN_DIR.'pro' ) ) $WOC_USER_TYPE = 'pro';
+		else $WOC_USER_TYPE = 'free';
 		include("manage_order_time.php"); 
 	}
 	

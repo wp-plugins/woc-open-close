@@ -4,7 +4,7 @@
 	Tags: woocommerce, woocommerce open close, opening-closing-time,opening-time,closing-time,wordpress,web-shop-management,restrict-add-to-cart,wordpress-plugin,woc-open-close,maintain scheduling in woocommerce,maintain scheduling in website, maintain scheduling in webshop, opening, closing, opening shop, opening website, opening woocommerce, closing shop, closing website, closing woocommerce 
 	Requires at least: 3.0
 	Tested up to: 4.3.1
-	Stable tag: 1.1.1
+	Stable tag: 1.1.2
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -56,5 +56,8 @@ Thanks.
 	
 	= 1.1.1 =
 	* Fixed a BUG
+	
+	= 1.1.2 =
+	* Automation in PRO Feature
 	
 	

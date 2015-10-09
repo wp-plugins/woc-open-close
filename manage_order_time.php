@@ -101,7 +101,7 @@ else
 				<font color="red">'.$message.'</font>
 			</h2>';
 			
-	if ( WOC_USER_TYPE == 'free' ):
+	if ( $WOC_USER_TYPE == 'free' ):
 		echo '<h2 align="center" style="background:#3993D0;border: 2px solid #861212;padding: 5px;width: 80%;margin-left: auto;margin-right: auto;"> 
 				<b>Warning !!! </b>
 				</br><hr>
@@ -109,7 +109,7 @@ else
 				</br><hr>
 				<a style="text-decoration:none;" href="http://pluginbazar.ml" target="_blank"><font color="#400000"><b>Click Here to BUY</b></font></a>
 			</h2>';
-	elseif ( WOC_USER_TYPE == 'pro' ):	
+	elseif ( $WOC_USER_TYPE == 'pro' ):	
 		echo '<h2 align="center" style="background:#3993D0;border: 2px solid #861212;padding: 5px;width: 80%;margin-left: auto;margin-right: auto;"> 
 				<b>Congratulations !!! </b>
 				</br><hr>
